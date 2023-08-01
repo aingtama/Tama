@@ -13,7 +13,7 @@
 	<body bgcolor="black" onclick="play()">
 		<div class="content" style="top: 0;left: 0;right: 0;bottom: 0;height: 50%;margin: auto;position: absolute;"/>
 		<center>
-			<img alt="LOCALGHOST CLAN" src="https://i.ibb.co/G23PYwm/20230601-224733.jpg" width="400px">
+			<img alt="INDONESIAN UNDERGROUND IN HERE" src="https://i.ibb.co/G23PYwm/20230601-224733.jpg" width="400px">
 			<font size="4px" face="Martian Mono:wght" color="white"><h1>LOCKED BY <font color="red">S4NGKUR14NG</font><br><br>
             <font size="4px" face="Martian Mono:wght" color="white"><br>hey admin,your site is too weak that i can infiltrate and break its security system from inside</font><br></h1></font>
 			<font face="Courier New" size="5" color="white">[ INDONESIAN HACKER RULES ]</font></br></br>
