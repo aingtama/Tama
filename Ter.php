@@ -1,33 +1,36 @@
-<HTML>
-	<head>
-		<title>LOCKED BY S4NGKUR14NG</title>
-		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-		<meta name="description" content="patch your bug sir,because your site got hack" />
-		<meta name="keywords" content="DEFACED BY S4NGKUR14NG"/>
-		<link rel="icon" type="image/jpg" href="https://i.ibb.co/hYsmfHj/20230519-230535.jpg"/>
-		<link rel="preconnect" href="https://fonts.googleapis.com"/>
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300&display=swap" rel="stylesheet"/>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap" rel="stylesheet">
-	</head>
-	<body bgcolor="black" onclick="play()">
-		<div class="content" style="top: 0;left: 0;right: 0;bottom: 0;height: 50%;margin: auto;position: absolute;"/>
-		<center>
-			<img alt="INDONESIAN UNDERGROUND IN HERE" src="https://i.ibb.co/G23PYwm/20230601-224733.jpg" width="400px">
-			<font size="4px" face="Martian Mono:wght" color="white"><h1>LOCKED BY <font color="red">S4NGKUR14NG</font><br><br>
-            <font size="4px" face="Martian Mono:wght" color="white"><br>hey admin,your site is too weak that i can infiltrate and break its security system from inside</font><br></h1></font>
-			<font face="Courier New" size="5" color="white">[ INDONESIAN HACKER RULES ]</font></br></br>
+<html lang="en-US"><head><title>Locked by ./Tama1337 </title>
+<meta property="og:title" content=".:people in lonely:.">
+<link rel="icon"  href="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/c0970438f0ea57a29ae700d4/2396660-min.png">
+<meta property="og:author" content="Tama1337">
+<style type="text/css"> @import url("https://fonts.googleapis.com/css?family=Kelly+Slab"); body { background-color: black; color:white; font-family:Kelly Slab; font-size:14px; } img { opacity:1; } img:hover { opacity:1; } a { text-decoration:none; color:#FFFFFF; } a:hover { text-decoration:none; color:red; } x{ color: red; } @keyframes fade { from { opacity: 1.0; } 50% { opacity: 1; } to { opacity: 1.0; } } @-webkit-keyframes fade { from { opacity: 1.0; } 50% { opacity: 0.5; } to { opacity: 1.0; } } .blink { animation:fade 0.5s infinite; -webkit-animation:fade 0.7s infinite; } </style>
+<style>
+
+		body{
+			background-image:url
+			background-size:1;
+			background-attachment: fixed;
+		}
+		p{
+			color:white;
+		}
+	</style>
+
+
+<body><center><table height="50%" width="60%"> <br> <br> <br> <td align="center"><img style="width:450px;" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwz6x_NtZJPj_ZkFuBTwLYR1gYCg0m79UX4-k6IZzyeQ&s' width="520"><br>
+<font class="blink_text" face="Kelly Slab" size="10"><i> <b>Hacked By <x> ./Tama1337</x> </x></i><font size="6"> <br><hr>Stay be yourself and make world admit you<br><font color="skyblue" face="">eat - exploit - masturbation - sleep - repeat
+<br><br><font color="red" face="">Thanks To :<font color="white"><marquee width="400">ObitoHaxor - ./Wader1337 - ./jee - ./nfex - Reload_X12 - koclokxploit - Danz - ClanSir - MalangBoys - G.S.O.H - TNG</marquee><br>
+</x><hr> 
 <audio id="audioNotifikasi">
 
-  <source src="https://github.com/randixploit/hek/raw/main/yt5s.com%20-%20somewhere%20only%20we%20know%20(Gustixa%20&%20Rhianne)%20(128%20kbps).mp3" type="audio/mpeg">
+  <source src="https://github.com/aingtama/Tama/raw/main/videoplayback.m4a" type="audio/mpeg">
 
 </audio>
 
-<button style="border:2px solid red; border-radius:30px; background-color:black;" onclick="playAudio()" type="button"><font face="monaco" size="3" color="white">Play Music</font></button>
+<button style="border:3px solid red; border-radius:40px; background-color:black;" onclick="playAudio()" type="button"><font face="monaco" size="4" color="white">Play Music</font></button>
 
-<button style="border:2px solid red; border-radius:30px; background-color:black;" onclick="pauseAudio()" type="button"><font face="monaco" size="3" color="white">Pause Music</font></button> <br>
+<button style="border:3px solid red; border-radius:40px; background-color:black;" onclick="pauseAudio()" type="button"><font face="monaco" size="4" color="white">Pause Music</font></button> <br>
 
-<a href="https://www.facebook.com/profile.php?id=100092463732483"><button style="border:2px solid red; border-radius:30px; background-color:black;"><font face="monaco" size="3" color="white">Contact Me</font></button></a>
+<a href="mailto:peopleindarkness.666@gmail.com"><button style="border:3px solid red; border-radius:40px; background-color:black;"><font face="monaco" size="4" color="white">Contact Me</font></button></a>
 
 <script type="text/javascript">
 
@@ -45,16 +48,6 @@ function pauseAudio() {
 
 } 
 
-</script>
-
-<br>
-		</center>
-		</div>
-	</body>
-	  <script>
-    var x = document.getElementById("sec");
-    function play() {
-      x.play(); 	
-    }
-  </script>
-</html>
+</script><br> 
+</td></tr></table></center>
+</body></html>
