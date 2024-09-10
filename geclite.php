@@ -24,6 +24,36 @@ function show_login_page() {
   #passwordField {
     display: none;
     margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  #passwordField.show {
+    opacity: 1;
+  }
+  input[type="password"], input[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s ease;
+  }
+  input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  input[type="password"]:focus, input[type="submit"]:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  input[type="submit"] {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.4);
   }
 </style>
 </head>
@@ -57,7 +87,7 @@ function show_login_page() {
   forbiddenCode.addEventListener('click', () => {
     clickCount++;
     if (clickCount === 5) {
-      passwordField.style.display = 'block'; // Show the password field
+      passwordField.classList.add('show'); // Show the password field with fade-in effect
     }
   });
 </script>
